@@ -37,14 +37,35 @@ Adapters to 1.27mm pitch smd are provided for these packages:
 * TSSOP-16
 * SOT-363/SC-70
 
+Bottom variants (Ground plane option)
+-----------
+
+My original design uses the 1.27mm pattern on both sides. For some analog and RF circuits I wanted a better GND plane.
+So I made a variant with a near-solid GND plane on the bottom side.
+
+* Near solid copper plane on the bottom side
+* Plated-through holes in 2.54mm raster
+    * The holes have a minimal annular ring of 0.15mm
+    * Around the ring is another 0.15mm space
+    * After that the GND plane begins
+* A hole just soldered on the top is not automatically connected to the GND plane because of the 0.15mm space
+* Just put a blob of solder on the bottom to connect a hole to the GND plane
+
+| <img src="https://github.com/electroniceel/protoboard/raw/master/photos/gndplane.jpg" width=350 alt="GND plane"> | <img src="https://github.com/electroniceel/protoboard/raw/master/photos/gndplane-detail.jpg" width=350 alt="GND plane detail"> |
+
+
 How to get?
 -----------
 
 Chinese pcb manufacturing services became so cheap even for small quantities
 that it's easiest for you to order the protoboards there for yourself.
 
-I ordered these boards from [Elecrow](https://www.elecrow.com/) and [JLCPCB/EasyEDA](https://jlcpcb.com/), 
-they both turned out fine and ordering was smooth.
+When I began designing these boards, I ordered samples from Elecrow and JLCPCB and both came out fine. But
+when ordering some new boards, JLCPCB now declined to manufacture them with (cheap) HASL surface finish and only
+wanted to manufacture them if I switched to (more expensive) ENIG. They explained that the HASL process might leave small
+solder blobs on the surface creating shorts. Elecrow continued to manufacture them without any issues.
+
+So I recommend to order the boards from [Elecrow](http://www.elecrow.com/referral-program/MjA0ODlqMnQ=/).
 
 Finished gerber zips ready for ordering can be found in the ["gerber" directory](https://github.com/electroniceel/protoboard/tree/master/gerber).
 
@@ -66,6 +87,11 @@ Making your own layout
 * Take the base pattern and copy it as much as you like
 * Draw the pcb edges (and maybe routed slots) around
 
+For the variant with GND plane on the bottom:
+
+* Use the "-oneside" footprints on the top side
+* Use "tht-0.8-thin-bottom" on the bottom side
+
 Soldering tips
 --------------
 
@@ -84,6 +110,15 @@ try again.
 
 This needs a bit of getting used to as it is completely different than populating boards with pads etched
 to match the circuit where you usually want heat transfer as fast and even as possible.
+
+Similar projects
+----------------
+
+This layout might not fit everyones needs. Here are some other protoboard designs with a grid of 1.27mm or lower:
+
+* [Black Mesa Labs BML 50MIL](https://blackmesalabs.wordpress.com/2017/12/03/bml-50mil-0-050-proto-boards-for-rapid-surface-mount-prototyping/), free to download sources & gerbers
+* [Busboard 50x50mil SMTpads](https://www.busboard.com/surfacemountpcbs), commercial
+* [FYD Open Source Hardware](https://www.aliexpress.com/item/32774106087.html), commercial
 
 License
 -------
